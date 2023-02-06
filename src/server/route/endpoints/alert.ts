@@ -7,7 +7,7 @@ import { execSync } from 'child_process';
 import yaml from 'js-yaml';
 import findup from 'findup-sync';
 
-const fs = require('fs');
+import fs from 'fs';
 
 router
   .route('/alert')
