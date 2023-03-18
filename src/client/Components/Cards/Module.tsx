@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { OpenFaaS, Alert, Charts, FunctionCost } from '../Modules/index';
 import NavBar from '../Home/NavBar';
@@ -22,12 +22,11 @@ import '../Modules/network.css';
 
 // needs to be chnaged to redux, under UI reducer ?
 const Module = (props: Modules) => {
-  const { state }: any = useLocation();
-  if (state === null) return <Navigate to={'/home'} />;
+  const location = useLocation();
+  const state: any = useMemo(() => location.state || [], [location.state]);
   const navigate = useNavigate();
-  const [id] = useState(props.id || state[0]._id);
+  const [id] = useState(props?.id || state[0]?._id);
   // Hooks used to indicate which module should be rendered in
-  const [currentModule, setCurrentModule] = useState('module');
   const [open, setOpen] = useState(false);
   const [btnText, setBtnText] = useState('Collapse');
   const [faas, setFaaS] = useState(true);
@@ -152,7 +151,7 @@ const Module = (props: Modules) => {
         }
       }
     }
-  }, []);
+  }, [props.nested, state]);
 
   const handleFaaSButton = () => {
     setFaaS(true);
@@ -219,7 +218,9 @@ const Module = (props: Modules) => {
     marginRight: '10px',
   };
 
-  return (
+  return !state.length ? (
+    <Navigate to={'/home'} />
+  ) : (
     <div>
       <header>
         <NavBar
