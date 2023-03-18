@@ -23,10 +23,11 @@ import '../Modules/network.css';
 // needs to be chnaged to redux, under UI reducer ?
 const Module = (props: Modules) => {
   const location = useLocation();
-  const state: any = useMemo(() => location.state || [], [location.state]);
+  const state = useMemo(() => location.state || [], [location.state]);
   const navigate = useNavigate();
   const [id] = useState(props?.id || state[0]?._id);
   // Hooks used to indicate which module should be rendered in
+  // const [currentModule, setCurrentModule] = useState('module');
   const [open, setOpen] = useState(false);
   const [btnText, setBtnText] = useState('Collapse');
   const [faas, setFaaS] = useState(true);
@@ -155,7 +156,7 @@ const Module = (props: Modules) => {
 
   const handleFaaSButton = () => {
     setFaaS(true);
-    setCurrentModule('faas');
+    // setCurrentModule('faas');
     setFunctionCost(false);
     setCharts(false);
     setAlert(false);
@@ -166,14 +167,14 @@ const Module = (props: Modules) => {
     setFaaS(false);
     setCharts(true);
     setFunctionCost(false);
-    setCurrentModule('charts');
+    // setCurrentModule('charts');
     setAlert(false);
     setKubacus(false);
   };
 
   const handleAlertButton = () => {
     setFaaS(false);
-    setCurrentModule('alert');
+    // setCurrentModule('alert');
     setCharts(false);
     setFunctionCost(false);
     setAlert(true);
@@ -186,7 +187,7 @@ const Module = (props: Modules) => {
     setFunctionCost(true);
     setAlert(false);
     setKubacus(false);
-    setCurrentModule('functionCost');
+    // setCurrentModule('functionCost');
   };
   const handleKubacusButton = () => {
     setFaaS(false);
@@ -194,7 +195,7 @@ const Module = (props: Modules) => {
     setFunctionCost(false);
     setAlert(false);
     setKubacus(true);
-    setCurrentModule('kubacus');
+    // setCurrentModule('kubacus');
   };
   const customBox = {
     overflow: 'scroll',
