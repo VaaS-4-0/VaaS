@@ -4,3 +4,4 @@ export * from './IFunction';
 export * from './IReducers';
 export * from './IVisualizer';
 export * from './ILogin';
+export * from './IUser';

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import { IReducers } from '../../Interfaces';
+import { IReducers, IUser } from '../../Interfaces';
 import { useAppDispatch, useAppSelector } from '../../Store/hooks';
 // import { setDarkMode } from '../../Store/actions';
 import {
@@ -42,7 +42,7 @@ const Admin = (props: { refetch: any; handleAdminModal: any }) => {
   const [updateUserErr, setUpdateUserErr] = useState('');
   const [deletePasswordErr, setDeletePasswordErr] = useState('');
   // const [addClusterMessage, setAddClusterMessage] = useState('');
-  const [currUser, setCurrUser] = useState<any>({});
+  const [currUser, setCurrUser] = useState<IUser>({});
   // const darkMode = uiReducer.clusterUIState.darkmode;
   // const [updateRefreshRateMessage, setUpdateRefreshRateMessage] = useState('');
   // const [refreshRate, setRefreshRate] = useState(0);
@@ -53,6 +53,7 @@ const Admin = (props: { refetch: any; handleAdminModal: any }) => {
     queryFn: fetchUser,
   });
   useEffect(() => {
+    console.log('userData', userData);
     setCurrUser(userData);
     // dispatch(setDarkMode(userData?.darkMode));
     // setRefreshRate(userData?.refreshRate / 1000);
