@@ -42,7 +42,10 @@ const Admin = (props: { refetch: any; handleAdminModal: any }) => {
   const [updateUserErr, setUpdateUserErr] = useState('');
   const [deletePasswordErr, setDeletePasswordErr] = useState('');
   // const [addClusterMessage, setAddClusterMessage] = useState('');
-  const [currUser, setCurrUser] = useState<IUser>({});
+  const [currUser, setCurrUser] = useState<IUser>({
+    username: '',
+    password: '',
+  });
   // const darkMode = uiReducer.clusterUIState.darkmode;
   // const [updateRefreshRateMessage, setUpdateRefreshRateMessage] = useState('');
   // const [refreshRate, setRefreshRate] = useState(0);
