@@ -32,9 +32,7 @@ export const deleteCluster = async (
   return data.data;
 };
 
-export const editCluster = async (
-  payload: AxiosRequestConfig<any> | undefined
-) => {
+export const editCluster = async (payload: AxiosRequestConfig | undefined) => {
   const data = await axiosInstance.put('/cluster', payload);
   return data.data;
 };

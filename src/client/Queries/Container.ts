@@ -7,6 +7,12 @@ const containerMetric = {
       const metric = await Query(clusterId, ns, query);
       return metric.data.result.map(
         (result: { metric: { container: any; pod: any } }) => {
+          console.log(
+            'result.metric.container: ',
+            result.metric.container,
+            'result.metric.pod: ',
+            result.metric.pod
+          );
           return [result.metric.container, result.metric.pod];
         }
       );
